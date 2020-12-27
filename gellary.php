@@ -47,8 +47,8 @@
       <nav class="site-navigation text-md-center" role="navigation">
         <div class="container">
           <ul class="site-menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="about.php">About us</a></li>
             <li><a href="shop.php">Shop</a></li>
             <li class="active"><a href="gellary.php">Doctors</a></li>
           </ul>

@@ -5,13 +5,6 @@ if(isset($_GET["query"])){
   $search_query = $_GET["query"];
 }
 
-$categories = [];
-
-if(isset($_GET['category'])){
-  $category_name = $_GET['category'];
-  $categories = explode(',',$category_name);
-}
-
 $page_no = 1;
 if(isset($_GET["pageno"])){
   $page_no = $_GET["pageno"];
@@ -57,7 +50,6 @@ if(isset($_GET["pageno"])){
 
             <div class="text-right col-6 col-md-4 order-3 order-md-3">
               <div class="site-top-icons">
-
                 <ul>
                   <li><a href="signup.php"><span class="icon glyphicon glyphicon-user"></span></a></li>
                   <li><a href="cart.php" class="site-cart"><span class="icon glyphicon glyphicon-shopping-cart"></span>
@@ -66,7 +58,6 @@ if(isset($_GET["pageno"])){
                   </li> 
                 </ul>
               </div> 
-
             </div>
 
           </div>
@@ -76,8 +67,8 @@ if(isset($_GET["pageno"])){
         <div class="container">
           <ul class="site-menu">
             <li><a href="index.php">Home</a></li>
-            <li><a href="index.php">About us</a></li>
-            <li class="active"><a href="shop.php">Shop</a></li>
+            <li class="active"><a href="about.php">About us</a></li>
+            <li><a href="shop.php">Shop</a></li>
             <li><a href="gellary.php">Doctors</a></li>
           </ul>
         </div>
@@ -87,68 +78,47 @@ if(isset($_GET["pageno"])){
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong></div>
+          <div class="col-md-12 mb-0"><a href="index.php">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">About</strong></div>
         </div>
       </div>
-    </div>
+    </div>  
 
-    <div class="site-section">
+    <div class="site-section block-8">
       <div class="container">
-
-        <div class="row mb-5">
-			<!-- append filter_data -->
-			
-			<!-- side bar -->
-          <div class="col-md-3 order-1 mb-4 mb-md-0">
-            <div class="border p-4 rounded mb-4">
-              <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
-              <ul class="list-unstyled mb-0">
-			    <?php
-					$servername = 'localhost';
-					$username = 'root';
-					$password = '';
-			   
-					// Create connection
-					$con = new mysqli($servername, $username, $password, "pharmacy_db");
-
-					// Check connection
-					if ($con->connect_error) {
-						die("Connection failed: " . $con->connect_error);
-					}
-
-          $sql=mysqli_query($con, "SELECT * FROM category where category_status='1'");
-
-					if(mysqli_num_rows($sql)){
-					while($product_array=mysqli_fetch_array($sql)){
-                    
-                 
-                    ?>
-                    <div class="list-group-item checkbox">
-                        <label><input type="checkbox" <?php if(in_array(trim($product_array['category_name']),$categories)) echo 'checked'; else echo 'test'; ?> class="common_selector category" value="<?php echo $product_array['category_name']; ?>" > <?php echo $product_array['category_name']; ?> </label>
-                    </div>
-                    <?php    
-                    }
-					}
-                    ?>            
-				</ul>
-                </div> 
-            </div>
-			<!-- side bar end -->
-			
-			
-          </div>
-		
-		 
-			 </div>
-			
-           
+        <div class="row justify-content-center  mb-5">
+          <div class="col-md-7 site-section-heading text-center pt-4">
+            <h2>Learn more about our pharmacists</h2>
           </div>
         </div>
-        
+        <div class="row align-items-center">
+          <div class="col-lg-12 col-lg-5 pl-md-5">
+		  <p>MediTechBD pharmacists do much more than dispense prescriptions. Your pharmacist can help you and your family stay healthy by:</p>
+          <h1 class="bg-primary">Answering your questions:</h1>
+			<div class="">
+			  <p>If you have any questions regarding your medications or about one of the many services we offer, your pharmacist can help. They are always ready and willing to assist you.</p>
+			</div>
+			<h1 class="bg-primary">Provide Immunizations: </h1>
+			<div class="">
+			  <p>Our specially trained and certified pharmacists can provide a wide range of immunizations. You don’t need an appointment and we accept most insurance plans. Take your FREE Immunization Evaluation and talk to your pharmacist today.</p>
+			</div>
+			<h1 class="bg-primary">Helping you save money: </h1>
+			<div class="">
+			  <p>Your pharmacist can help guide you through questions you may have about your prescription insurance coverage, including Medicare Part D.</p>
+			</div>
+			
+			<h1 class="bg-primary">Work with your doctor: </h1>
+			<div class="">
+			  <p>Your pharmacist will work directly with your doctor when they have questions or possible concerns about the medications you are taking. They ensure you are at the lowest possible risk for overdoses and adverse drug reactions by keeping a detailed history of the medications you take.</p>
+			</div>
+      <br>
+		  <h4>So be sure to talk to your MediTechBD pharmacist today. The better they know you, the better they can help serve you and your needs.</h4>
+          </div>
+        </div>
       </div>
     </div>
-
- <footer class="site-footer border-top">       
+  
+    
+    <footer class="site-footer border-top">       
           <div class="col-md-12 text-center">
             <p>
             Copyright &copy;<script>document.write(new Date().getFullYear());</script>
@@ -156,56 +126,9 @@ if(isset($_GET["pageno"])){
           </div>
     </footer>
   </div>
-   
-  <script src="js/bootstrap.min.js"></script> 
+    
+	<script src="js/bootstrap.min.js"></script> 
 	<script src="js/index.js"></script>
-	<script>
-$(document).ready(function(){
-
-    filter_data();
-
-    $('.common_selector').click(function(){
-        filter_data();
-    });
-
-});
-function filter_data()
-{
-    
-    var action = 'fetch_data';
-    
-    var category = get_filter('category');
-
-    $(".results").remove();
-	$(".pagination").html("");
-
-    $.ajax({
-        url:"fetch_data.php",
-        method:"POST",
-        data:{
-          action:action,
-          category:category, 
-          query: '<?php echo $search_query; ?>', 
-          pageno: '<?php echo $page_no;?>'
-        },
-        success:function(data){
-            $('.mb-5').append(data);
-    //event.preventDefault();
-        }
-    });
-
-}
-
-function get_filter(class_name)
-{
-    var filter = [];
-    $('.'+class_name+':checked').each(function(){
-        filter.push($(this).val());
-  
-    });
-    return filter;
-}
-</script>
-    
+	
   </body>
 </html>

@@ -50,7 +50,7 @@ if(isset($_GET["pageno"])){
 
             <div class="text-right col-6 col-md-4 order-3 order-md-3">
               <div class="site-top-icons">
-<!--
+
                 <ul>
                   <li><a href="signup.php"><span class="icon glyphicon glyphicon-user"></span></a></li>
                   <li><a href="cart.php" class="site-cart"><span class="icon glyphicon glyphicon-shopping-cart"></span>
@@ -59,7 +59,7 @@ if(isset($_GET["pageno"])){
                   </li> 
                 </ul>
               </div> 
--->
+
             </div>
 
           </div>
@@ -68,8 +68,8 @@ if(isset($_GET["pageno"])){
       <nav class="site-navigation text-md-center" role="navigation">
         <div class="container">
           <ul class="site-menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="about.php">About us</a></li>
             <li class="active"><a href="shop.php">Shop</a></li>
             <li><a href="gellary.php">Doctors</a></li>
           </ul>
